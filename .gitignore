@@ -1,0 +1,64 @@
+# .NET
+bin/
+obj/
+*.dll
+*.exe
+*.pdb
+*.cache
+*.log
+
+# IDE
+.vs/
+.vscode/
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build results
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+
+# NuGet
+*.nupkg
+.nuget/
+packages/
+project.packages.config
+
+# User-specific files
+*.rsuser
+*.userprefs
+
+# Visual Studio
+*.psess
+*.vsp
+*.vspx
+*.cache
+*.pdb
+*.db
+*.mdf
+*.ldf
+
+# Local development
+appsettings.Development.json
+*.local.*
+
+# Secrets
+*.env
+*.key
+*.pem
+credentials.json
+
+# OS
+.DS_Store
+Thumbs.db

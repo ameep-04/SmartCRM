@@ -1,0 +1,30 @@
+@model IEnumerable<SmartCRM.Models.Lead>
+@{ Layout = "~/Views/Shared/_Layout.cshtml"; }
+<h3>Leads</h3>
+<a asp-action="Create" class="btn btn-primary mb-3">+ Add Lead</a>
+<table class="table table-bordered table-hover">
+    <thead class="table-dark">
+        <tr><th>Customer</th><th>Status</th><th>Created</th><th>Actions</th></tr>
+    </thead>
+    <tbody>
+        @foreach (var l in Model) {
+        <tr>
+            <td>@l.Customer?.Name</td>
+            <td><span class="badge bg-@(l.Status == "Converted" ? "success" : l.Status == "Lost" ? "danger" : l.Status == "InProgress" ? "warning" : "secondary")">@l.Status</span></td>
+            <td>@l.CreatedDate.ToString("dd-MM-yyyy")</td>
+            <td>
+                <form method="post" asp-action="UpdateStatus" style="display:inline">
+                    <input type="hidden" name="id" value="@l.Id" />
+                    <select name="status" class="form-select form-select-sm d-inline w-auto">
+                        <option>New</option>
+                        <option>InProgress</option>
+                        <option>Converted</option>
+                        <option>Lost</option>
+                    </select>
+                    <button type="submit" class="btn btn-sm btn-primary">Update</button>
+                </form>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

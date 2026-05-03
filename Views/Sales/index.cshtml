@@ -1,0 +1,19 @@
+@model IEnumerable<SmartCRM.Models.Sale>
+@{ Layout = "~/Views/Shared/_Layout.cshtml"; }
+<h3>Sales</h3>
+<p class="alert alert-success">This month's total: <strong>₹@ViewBag.MonthlyTotal</strong></p>
+<table class="table table-bordered table-hover">
+    <thead class="table-dark">
+        <tr><th>Customer</th><th>Amount</th><th>Date</th><th>Action</th></tr>
+    </thead>
+    <tbody>
+        @foreach (var s in Model) {
+        <tr>
+            <td>@s.Customer?.Name</td>
+            <td>₹@s.Amount</td>
+            <td>@s.SaleDate.ToString("dd-MM-yyyy")</td>
+            <td><a asp-action="Edit" asp-route-id="@s.Id" class="btn btn-sm btn-warning">Edit Amount</a></td>
+        </tr>
+        }
+    </tbody>
+</table>

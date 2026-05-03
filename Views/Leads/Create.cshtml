@@ -1,0 +1,14 @@
+@{ Layout = "~/Views/Shared/_Layout.cshtml"; }
+<h3>Create Lead</h3>
+<form method="post">
+    <div class="mb-3">
+        <label>Customer</label>
+        <select name="CustomerId" class="form-control" required>
+            @foreach (var c in ViewBag.Customers as IEnumerable<SmartCRM.Models.Customer>) {
+                <option value="@c.Id">@c.Name</option>
+            }
+        </select>
+    </div>
+    <button type="submit" class="btn btn-success">Create Lead</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>

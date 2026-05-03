@@ -1,0 +1,16 @@
+@{ Layout = "~/Views/Shared/_Layout.cshtml"; }
+<h3>Add Follow-up</h3>
+<form method="post">
+    <div class="mb-3">
+        <label>Lead (Customer)</label>
+        <select name="LeadId" class="form-control" required>
+            @foreach (var l in ViewBag.Leads as IEnumerable<SmartCRM.Models.Lead>) {
+                <option value="@l.Id">@l.Customer?.Name - @l.Status</option>
+            }
+        </select>
+    </div>
+    <div class="mb-3"><label>Follow-up Date</label><input type="date" name="FollowUpDate" class="form-control" required /></div>
+    <div class="mb-3"><label>Notes</label><textarea name="Notes" class="form-control"></textarea></div>
+    <button type="submit" class="btn btn-success">Save</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>

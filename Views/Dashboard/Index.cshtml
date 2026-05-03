@@ -1,0 +1,29 @@
+@{ Layout = "~/Views/Shared/_Layout.cshtml"; }
+<h3>Dashboard</h3>
+<div class="row g-3 mt-2">
+    <div class="col-md-3">
+        <div class="card text-center p-3 bg-primary text-white">
+            <h4>@ViewBag.TotalCustomers</h4><p>Customers</p>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card text-center p-3 bg-secondary text-white">
+            <h4>@ViewBag.TotalLeads</h4><p>Leads</p>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card text-center p-3 bg-warning">
+            <h4>@ViewBag.TodayFollowUps</h4><p>Today Follow-ups</p>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card text-center p-3 bg-danger text-white">
+            <h4>@ViewBag.MissedFollowUps</h4><p>Missed</p>
+        </div>
+    </div>
+    <div class="col-12">
+        <div class="card text-center p-3 bg-success text-white">
+            <h4>₹@ViewBag.TotalSales</h4><p>Total Sales</p>
+        </div>
+    </div>
+</div>

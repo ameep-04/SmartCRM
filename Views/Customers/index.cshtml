@@ -1,0 +1,26 @@
+@model IEnumerable<SmartCRM.Models.Customer>
+@{ Layout = "~/Views/Shared/_Layout.cshtml"; }
+<h3>Customers</h3>
+<a asp-action="Create" class="btn btn-primary mb-3">+ Add Customer</a>
+<table class="table table-bordered table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th>Name</th><th>Email</th><th>Phone</th><th>Address</th><th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var c in Model) {
+        <tr>
+            <td>@c.Name</td>
+            <td>@c.Email</td>
+            <td>@c.Phone</td>
+            <td>@c.Address</td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@c.Id" class="btn btn-sm btn-warning">Edit</a>
+                <a asp-action="Delete" asp-route-id="@c.Id" class="btn btn-sm btn-danger"
+                onclick="return confirm('Delete this customer?')">Delete</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

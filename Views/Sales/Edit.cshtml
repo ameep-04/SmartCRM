@@ -1,0 +1,11 @@
+@model SmartCRM.Models.Sale
+@{ Layout = "~/Views/Shared/_Layout.cshtml"; }
+<h3>Edit Sale Amount</h3>
+<form method="post">
+    <input type="hidden" name="Id" value="@Model.Id" />
+    <input type="hidden" name="CustomerId" value="@Model.CustomerId" />
+    <input type="hidden" name="SaleDate" value="@Model.SaleDate" />
+    <div class="mb-3"><label>Amount (₹)</label><input type="number" name="Amount" value="@Model.Amount" class="form-control" step="0.01" required /></div>
+    <button type="submit" class="btn btn-success">Update</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>

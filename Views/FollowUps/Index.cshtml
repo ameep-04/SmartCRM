@@ -1,0 +1,29 @@
+@model IEnumerable<SmartCRM.Models.FollowUp>
+@{ Layout = "~/Views/Shared/_Layout.cshtml"; }
+<h3>Follow-ups</h3>
+<a asp-action="Create" class="btn btn-primary mb-3">+ Add Follow-up</a>
+
+@if (ViewBag.Missed != null && ((IEnumerable<SmartCRM.Models.FollowUp>)ViewBag.Missed).Any()) {
+<div class="alert alert-danger">⚠ Missed Follow-ups: @((ViewBag.Missed as IEnumerable<SmartCRM.Models.FollowUp>).Count())</div>
+}
+
+<table class="table table-bordered table-hover">
+    <thead class="table-dark">
+        <tr><th>Lead</th><th>Date</th><th>Notes</th><th>Status</th><th>Action</th></tr>
+    </thead>
+    <tbody>
+        @foreach (var f in Model) {
+        <tr class="@(f.FollowUpDate.Date < DateTime.Today && f.Status == "Pending" ? "table-danger" : "")">
+            <td>@f.Lead?.Customer?.Name</td>
+            <td>@f.FollowUpDate.ToString("dd-MM-yyyy")</td>
+            <td>@f.Notes</td>
+            <td>@f.Status</td>
+            <td>
+                @if (f.Status == "Pending") {
+                    <a asp-action="Complete" asp-route-id="@f.Id" class="btn btn-sm btn-success">Mark Done</a>
+                }
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
